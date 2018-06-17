@@ -1,0 +1,131 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CureSim2018</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+    window.ga = function () {
+        ga.q.push(arguments)
+    };
+    ga.q = [];
+    ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto');
+    ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<!-- Begin Game Layout -->
+
+<div id="header">
+    <h1>Cure Console 3000</h1>
+    <div id="cure"> Cure name: <span id="cureName"> </span></div>
+    <div style="clear:both;"></div>
+</div>
+
+<div id="resources">
+    <div id="resourcesContainer">
+        <h3>Basic Resources</h3>
+        <table id="basicResources">
+            <tr>
+                <td><button onmousedown="increment('credits')">Collect Credits</button></td>
+                <td>Credits: </td>
+                <td class="number"><span id="credits">0</span></td>
+                <td class="numberNet"><span id="netCredits">0</span>/s</td>
+            </tr>
+            <tr>
+                <td><button onmousedown="increment('pills')">Synthesize Medicine</button></td>
+                <td>Medicine: </td>
+                <td class="number"><span id="pills">0</span></td>
+                <td class="numberNet"><span id="netPills">-1</span>/s</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="team">
+    <div id="teamContainer">
+        <h3>People</h3>
+        <div id="teamNumbers">
+            <table>
+                <tbody>
+                <tr>
+                    <td>Current Team Size:</td>
+                    <td class="number"><span id="teamCurrent">0</span></td>
+                </tr>
+                </tbody>
+            </table>
+            <br/>
+        </div>
+        <div id="workerCreate">
+            <button id="hireWorker" onmousedown="hire(1)">Hire Worker</button>
+            <span class="cost"><span id="workerCost">10</span> credits</span><span
+            class="note">: Hire a new worker</span>
+        </div>
+    </div>
+    <div id="jobsContainer">
+        <h3>Jobs</h3>
+        <table id="jobs">
+            <tbody>
+            <tr id="unassignedGroup">
+                <td>Unassigned:</td>
+                <td class="number"><span id="unassigned">0</span></td>
+            </tr>
+            <tr id="scientistGroup">
+                <td><button onmousedown="unassign('scientists',1);">-</button></td>
+                <td class="job">Scientists:</td>
+                <td class="number"><span id="scientists">0</span></td>
+                <td><button onmousedown="assign('scientists',1);">+</button></td>
+                <td><span class="note">Uses Centrifuge to make medicine</span></td>
+            </tr>
+            <tr id="doctorGroup">
+                <td><button onmousedown="unassign('doctors',1);">-</button></td>
+                <td class="job">Doctors:</td>
+                <td class="number"><span id="doctors">0</span></td>
+                <td><button onmousedown="assign('doctors',1);">+</button></td>
+                <td><span class="note">Sells medicine for Credits</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="equipment">
+    <div id="equipmentContainer">
+        <h3>Lab Equipment</h3>
+        <table id="equipmentTable">
+            <tr id="centrifugeRow">
+                <td><button id="buyCentrifuge" onmousedown="buyEquipment('centrifuges', 1)">Buy Centrifuge</button></td>
+                <td class="equipmentNames">Centrifuges: </td>
+                <td class="number"><span id="centrifuges">0</span></td>
+                <td><span class="cost">1 Scientist, <span id="centrifugeCost">10</span> Credits</span><span class="note">: +1 medicine/s</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
